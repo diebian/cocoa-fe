@@ -1,5 +1,7 @@
 import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 
+import InicioLayout from "@/pages/Layout/InicioLayout.vue";
+
 import Dashboard from "@/pages/Dashboard.vue";
 import UserProfile from "@/pages/UserProfile.vue";
 import TableList from "@/pages/TableList.vue";
@@ -9,11 +11,37 @@ import Maps from "@/pages/Maps.vue";
 import Notifications from "@/pages/Notifications.vue";
 import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
 
+import Inicio from "@/pages/web/Inicio.vue";
+import Login from "@/pages/web/Login.vue";
+import Register from "@/pages/web/Register.vue";
+
 const routes = [
   {
     path: "/",
+    component: InicioLayout,
+    redirect: "inicio",
+    children: [
+      {
+        path: "inicio",
+        name: "Inicio",
+        component: Inicio,
+      },
+      {
+        path: "login",
+        name: "Login",
+        component: Login,
+      },
+      {
+        path: "register",
+        name: "Register",
+        component: Register,
+      },
+    ]  
+  },
+  {
+    path: "/dash",
     component: DashboardLayout,
-    redirect: "/dashboard",
+    redirect: "/dash/dashboard",
     children: [
       {
         path: "dashboard",
@@ -21,27 +49,27 @@ const routes = [
         component: Dashboard,
       },
       {
-        path: "user",
+        path: "user/",
         name: "User Profile",
         component: UserProfile,
       },
       {
-        path: "table",
+        path: "table/",
         name: "Table List",
         component: TableList,
       },
       {
-        path: "typography",
+        path: "typography/",
         name: "Typography",
         component: Typography,
       },
       {
-        path: "icons",
+        path: "icons/",
         name: "Icons",
         component: Icons,
       },
       {
-        path: "maps",
+        path: "maps/",
         name: "Maps",
         meta: {
           hideFooter: true,
@@ -49,12 +77,12 @@ const routes = [
         component: Maps,
       },
       {
-        path: "notifications",
+        path: "notifications/",
         name: "Notifications",
         component: Notifications,
       },
       {
-        path: "upgrade",
+        path: "upgrade/",
         name: "Upgrade to PRO",
         component: UpgradeToPRO,
       },
