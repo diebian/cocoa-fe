@@ -14,6 +14,7 @@ import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
 import Inicio from "@/pages/web/Inicio.vue";
 import Login from "@/pages/web/Login.vue";
 import Register from "@/pages/web/Register.vue";
+import UserCipca from "@/pages/web/Users/List.vue";
 
 const routes = [
   {
@@ -47,6 +48,11 @@ const routes = [
         path: "dashboard",
         name: "Dashboard",
         component: Dashboard,
+      },
+      {
+        path: "usercipca/",
+        name: "Usuarios",
+        component: UserCipca,
       },
       {
         path: "user/",

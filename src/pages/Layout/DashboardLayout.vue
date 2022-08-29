@@ -15,6 +15,10 @@
         <md-icon>person</md-icon>
         <p>User Profile</p>
       </sidebar-link>
+      <sidebar-link to="usercipca">
+        <md-icon>person</md-icon>
+        <p>Usuarios</p>
+      </sidebar-link>
       <sidebar-link to="table">
         <md-icon>content_paste</md-icon>
         <p>Table list</p>
@@ -44,11 +48,11 @@
     <div class="main-panel">
       <top-navbar></top-navbar>
 
-      <fixed-plugin
+      <!-- <fixed-plugin
         :color.sync="sidebarBackground"
         :image.sync="sidebarBackgroundImage"
       >
-      </fixed-plugin>
+      </fixed-plugin> -->
 
       <dashboard-content> </dashboard-content>
 
@@ -62,7 +66,7 @@ import TopNavbar from "./TopNavbar.vue";
 import ContentFooter from "./ContentFooter.vue";
 import DashboardContent from "./Content.vue";
 import MobileMenu from "@/pages/Layout/MobileMenu.vue";
-import FixedPlugin from "./Extra/FixedPlugin.vue";
+/* import FixedPlugin from "./Extra/FixedPlugin.vue"; */
 
 export default {
   components: {
@@ -70,7 +74,7 @@ export default {
     DashboardContent,
     ContentFooter,
     MobileMenu,
-    FixedPlugin,
+    //FixedPlugin,
   },
   data() {
     return {

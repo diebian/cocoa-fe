@@ -20,6 +20,7 @@ import Notifications from "./components/NotificationPlugin";
 import MaterialDashboard from "./material-dashboard";
 
 import Chartist from "chartist";
+//import cors from "cors";
 
 
 // configure router
@@ -36,6 +37,7 @@ Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
 Vue.use(Notifications);
 Vue.use(VueAxios, axios);
+//Vue.use(cors);
 //Vue.use(VueI18n);
 //Vue.use(Vuex);
 //Vue.use(VueI18n);

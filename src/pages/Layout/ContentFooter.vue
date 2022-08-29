@@ -4,24 +4,23 @@
       <nav>
         <ul>
           <li>
-            <a href="https://www.creative-tim.com">Creative Tim</a>
+            <a href="https://cipca.org.bo/">Cipca</a>
           </li>
           <li>
-            <a href="https://creative-tim.com/presentation"> About Us </a>
+            <a href="https://www.facebook.com/CIPCA_Bolivia-114876261976070/"> Facebook </a>
           </li>
           <li>
-            <a href="http://blog.creative-tim.com"> Blog </a>
+            <a href="https://twitter.com/CIPCA_Bolivia"> Twitter </a>
           </li>
           <li>
-            <a href="https://www.creative-tim.com/license"> Licenses </a>
+            <a href="https://www.youtube.com/channel/UCvLSpDPnQChS6xULUPtC7yA"> Youtube </a>
           </li>
         </ul>
       </nav>
       <div class="copyright text-center">
-        &copy; {{ new Date().getFullYear() }}
-        <a href="https://www.creative-tim.com/?ref=mdf-vuejs" target="_blank"
-          >Creative Tim</a
-        >, made with <i class="fa fa-heart heart"></i> for a better web
+        <a href="https://ayudaenaccion.org/" target="_blank"
+          > Ayuda en Acción </a
+        >&copy; {{ new Date().getFullYear() }}
       </div>
     </div>
   </footer>
