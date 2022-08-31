@@ -15,9 +15,13 @@
         <md-icon>person</md-icon>
         <p>User Profile</p>
       </sidebar-link>
-      <sidebar-link to="usercipca">
+      <sidebar-link to="/usercipca">
         <md-icon>person</md-icon>
         <p>Usuarios</p>
+      </sidebar-link>
+      <sidebar-link to="/listproducer">
+        <md-icon>person</md-icon>
+        <p>Productores</p>
       </sidebar-link>
       <sidebar-link to="table">
         <md-icon>content_paste</md-icon>
@@ -39,10 +43,10 @@
         <md-icon>notifications</md-icon>
         <p>Notifications</p>
       </sidebar-link>
-      <sidebar-link to="upgrade" class="active-pro">
+      <!-- <sidebar-link to="upgrade" class="active-pro">
         <md-icon>unarchive</md-icon>
         <p>Upgrade to PRO</p>
-      </sidebar-link>
+      </sidebar-link> -->
     </side-bar>
 
     <div class="main-panel">

@@ -21,6 +21,8 @@ import MaterialDashboard from "./material-dashboard";
 
 import Chartist from "chartist";
 //import cors from "cors";
+axios.defaults.baseURL = 'https://apicacaodev.diebian.dev/public/api/';
+//import {labelsi18} from '@/utils/labels.js';
 
 
 // configure router
@@ -46,6 +48,7 @@ Vue.use(VueAxios, axios);
 /* eslint-disable no-new */
 new Vue({
   el: "#app",
+  //labelsi18,
   render: (h) => h(App),
   router,
   data: {

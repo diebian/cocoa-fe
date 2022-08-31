@@ -3,8 +3,9 @@ export default {
       // LABELS PRODUCERS
       producer: {
         id: "ID",
-        names: "Nombre/s",
-        surnames: "Apellido/s",
+        uuid: "UUID",
+        names: "Nombre(s)",
+        surnames: "Apellido(s)",
         department_id: "Departamento",
         municipality_id: "Municipio",
         community_id: "Comunidad",
@@ -18,8 +19,8 @@ export default {
         updated_at: "Actualizado el",
       },
       producer_placeholder: {
-        names: "Ingrese Nombre/s",
-        surnames: "Ingrese Apellido/s",
+        names: "Ingrese Nombre(s)",
+        surnames: "Ingrese Apellido(s)",
         department_id: "Ingrese Departamento",
         municipality_id: "Ingrese Municipio",
         community_id: "Ingrese Comunidad",
@@ -80,8 +81,8 @@ export default {
         q9title: "Producción", // Enunciado
         q9_1a: "Volumen de grano cosechado (qq de grano seco)",
         q9_2a: "Destino del grano, Venta",
-        q9_2b: "Destino del grano, Autoconsumo ",
-        q9_2c: "Destino del grano, Transformación ",
+        q9_2b: "Destino del grano, Autoconsumo",
+        q9_2c: "Destino del grano, Transformación",
         q10title: "Comercialización", // Enunciado
         q10: "Precio del grano comercializado",
         created_by: "REGISTRADO POR",
@@ -96,7 +97,7 @@ export default {
         id: "ID",
         lat: "Latitud", // No visible en form add/update
         lng: "Longitud", // No visible en form add/update
-        group_name: "Nombre del grupo de recolectores  ",
+        group_name: "Nombre del grupo de recolectores",
         island_name: "Nombre de la isla o chocolatal",
         department_id: "Departamento",
         municipality_id: "Municipio",

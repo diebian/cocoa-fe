@@ -15,7 +15,7 @@
           <div class="md-layout-item md-size-100">
             <md-field>
               <md-icon>email</md-icon>
-              <label><!-- {{labels.es.producer.names}} --> Email</label>
+              <label>Email</label>
               <md-input v-model="email" id="email" name="email" type="email"></md-input>
             </md-field>
           </div>
@@ -101,4 +101,6 @@ export default {
   } 
 };
 </script>
-<style></style>
+<style>
+  .md-hl{color:'#7ab34a'}
+</style>
