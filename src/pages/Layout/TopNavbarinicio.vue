@@ -1,5 +1,5 @@
 <template>
-  <md-toolbar md-elevation="5" class="md-success">
+  <md-toolbar md-elevation="5" class="md-success md-hl-header">
     <div class="md-toolbar-row">
       <div class="md-toolbar-section-start md-medium-size-50 md-xsmall-size-50">
         <md-button to="inicio" class="md-success">
@@ -9,7 +9,7 @@
       </div>
       <div class="md-toolbar-section-end md-medium-size-50 md-xsmall-size-50">
         <!--  <router-link to=""></router-link> -->
-        <md-button to="register" class="md-success"><md-icon>lock</md-icon>Registrarse</md-button>
+        <!-- <md-button to="register" class="md-success"><md-icon>lock</md-icon>Registrarse</md-button> -->
         <md-button to="login" class="md-success"><md-icon>person</md-icon>Iniciar Sesión</md-button>
       </div>
     </div>
@@ -29,4 +29,9 @@ export default {
 };
 </script>
 
-<style lang="css"></style>
+<style lang="css">
+  .md-hl-header{
+    height: 95px;
+    /* border: 1px solid red; */
+  }
+</style>

@@ -33,8 +33,10 @@
       &:hover,
       &:focus {
         color: $white-color !important;
-        background-color: $variation-color !important;
-        @include shadow-big-color($variation-color);
+        /* background-color: $variation-color !important;
+        @include shadow-big-color($variation-color); */
+        background-color: #42d146 !important;
+        @include shadow-big-color(#42d146);
       }
     }
 

@@ -1,0 +1,70 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Hp\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add vuex@next --save
+
+PATH: 
+  C:\Python310\Scripts\;C:\Python310\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\OpenJDK\openjdk-11.0.15_10\bin;C:\Users\Hp\AppData\Local\Microsoft\WindowsApps;C:\Users\Hp\AppData\Roaming\Composer\vendor\bin;C:\Users\Hp\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\nodejs;C:\Users\Hp\AppData\Roaming\npm;C:\Program Files\heroku\bin;C:\Users\Hp\AppData\Local\Android\Sdk;
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.16.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, copyfile 'C:\Users\Hp\AppData\Local\Yarn\Cache\v6\npm-@babel-runtime-7.20.1-1148bb33ab252b165a06698fde7576092a78b4a9-integrity\node_modules\@babel\runtime\helpers\esm\package.json' -> 'D:\prueba_cipca\vue-material-dashboard\node_modules\@babel\runtime\helpers\esm\package.json'
+
+npm manifest: 
+  {
+    "name": "vue-material-dashboard",
+    "version": "1.5.0",
+    "private": true,
+    "scripts": {
+      "serve": "vue-cli-service serve --open",
+      "dev": "npm run serve",
+      "build": "vue-cli-service build",
+      "lint": "vue-cli-service lint"
+    },
+    "dependencies": {
+      "axios": "^0.27.2",
+      "chartist": "0.11.4",
+      "core-js": "3.21.1",
+      "cors": "^2.8.5",
+      "google-maps": "4.3.3",
+      "vue": "2.6.14",
+      "vue-axios": "^3.4.1",
+      "vue-clickaway": "2.2.2",
+      "vue-github-buttons": "3.1.0",
+      "vue-i18n": "^9.2.2",
+      "vue-material": "1.0.0-beta-15",
+      "vue-paginate": "^3.6.0",
+      "vue-router": "3.5.2",
+      "vue-social-sharing": "3.0.9",
+      "vue2-google-maps": "^0.10.7",
+      "vuex": "^4.0.2"
+    },
+    "devDependencies": {
+      "@vue/cli-plugin-babel": "4.5.15",
+      "@vue/cli-plugin-eslint": "4.5.15",
+      "@vue/cli-plugin-router": "4.5.15",
+      "@vue/cli-service": "4.5.15",
+      "@vue/eslint-config-prettier": "6.0.0",
+      "babel-eslint": "10.1.0",
+      "es6-promise": "4.2.8",
+      "eslint": "7.32.0",
+      "eslint-plugin-prettier": "4.0.0",
+      "eslint-plugin-vue": "7.20.0",
+      "prettier": "2.6.0",
+      "sass": "1.49.9",
+      "sass-loader": "10.2.1",
+      "vue-template-compiler": "2.6.14"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

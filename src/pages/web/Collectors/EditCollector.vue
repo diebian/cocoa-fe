@@ -1,37 +1,36 @@
 <template>
     <div>
-        <form novalidate class="md-layout" > <!-- @submit.prevent="validateUser" -->
+        <form novalidate class="md-layout" >
             <md-card class="md-layout-item md-size-100 md-small-size-100">
                 <md-card-content>
                     <div class="md-toolbar-section-start md-layout md-size-100">
                         <div class="md-title">{{this.$route.name}}</div>
                     </div>
                     <div class="md-layout md-size-100">
-                        <div class="md-layout-item md-small-size-100 md-size-50">
-                            <md-field>
-                                <label>{{i18.es.producer.names}}</label>
-                                <md-input v-model="form.names" id="names" name="names" type="text"></md-input>
-                            </md-field>
-                        </div>
-                        <div class="md-layout-item md-small-size-100 md-size-50">
-                            <md-field>
-                                <label>{{i18.es.producer.surnames}}</label>
-                                <md-input v-model="form.surnames" id="surnames" name="surnames" type="text"></md-input>
-                            </md-field>
-                        </div>
                         <!-- <div class="md-layout-item md-small-size-100 md-size-33">
                             <md-field>
-                                <label>{{i18.es.producer.uuid}}</label>
+                                <label>{{i18.es.collector.uuid}}</label>
                                 <md-input v-model="form.uuid" id="uuid" name="uuid" type="text"></md-input>
                             </md-field>
                         </div> -->
+                        <div class="md-layout-item md-small-size-100 md-size-50">
+                            <md-field>
+                                <label>{{i18.es.collector.group_name}}</label>
+                                <md-input v-model="form.group_name" id="group_name" name="group_name" type="text"></md-input>
+                            </md-field>
+                        </div>
+                        <div class="md-layout-item md-small-size-100 md-size-50">
+                            <md-field>
+                                <label>{{i18.es.collector.island_name}}</label>
+                                <md-input v-model="form.island_name" id="island_name" name="island_name" type="text"></md-input>
+                            </md-field>
+                        </div>
                     </div>
                                         
                     <div class="md-layout md-size-100">
                         <div class="md-layout-item md-small-size-100 md-size-33">
                             <md-field>
-                                <label >{{i18.es.producer.department_id}}</label>
-                                <!-- <md-select v-model="iniDepartment" name="departments" id="departments"> -->
+                                <label >{{i18.es.collector.department_id}}</label>
                                     <md-select v-model="form.department_id" name="departments" id="departments">
                                     <md-option v-for="department in currDepartments" :value="department.id" :key="department.id" >{{department.name}}</md-option>
                                 </md-select>
@@ -39,8 +38,7 @@
                         </div>
                         <div class="md-layout-item md-small-size-100 md-size-33">
                             <md-field>
-                                <label >{{i18.es.producer.municipality_id}}</label>
-                                <!-- <md-select v-model="iniDepartment" name="departments" id="departments"> -->
+                                <label >{{i18.es.collector.municipality_id}}</label>
                                     <md-select v-model="form.municipality_id" name="municipalities" id="municipalities" @md-selected="getCommunitiesNew(form.municipality_id)">
                                     <md-option v-for="municipality in currMunicipalities" :value="municipality.id" :key="municipality.id" >{{municipality.name}}</md-option>
                                 </md-select>
@@ -48,56 +46,59 @@
                         </div>
                         <div class="md-layout-item md-small-size-100 md-size-33">
                             <md-field>
-                                <label >{{i18.es.producer.community_id}}</label>
-                                <!-- <md-select v-model="iniDepartment" name="departments" id="departments"> -->
+                                <label >{{i18.es.collector.community_id}}</label>
                                     <md-select v-model="form.community_id" name="communities" id="communities">
                                     <md-option v-for="community in currCommunities" :value="community.id" :key="community.id" >{{community.name}}</md-option>
                                 </md-select>
                             </md-field>
                         </div>
-                        <!-- selected user:{{currDepartments}} -->
                     </div>
                     <div class="md-layout md-size-100">
-                        <div class="md-layout-item md-medium-size-100 md-small-size-100 md-size-25">
+                        <div class="md-layout-item md-small-size-100 md-size-33">
                             <md-field>
-                                <label>{{i18.es.producer.saf_size}}</label>
-                                <md-input v-model="form.saf_size" id="saf_size" name="saf_size" type="number" :step="0.01"></md-input>
+                                <label>{{i18.es.collector.number_collectors}}</label>
+                                <md-input v-model="form.number_collectors" id="number_collectors" name="number_collectors" type="number"></md-input>
                             </md-field>
                         </div>
-                        <div class="md-layout-item md-medium-size-100 md-small-size-100 md-size-25">
+                        <div class="md-layout-item md-small-size-100 md-size-33">
                             <md-field>
-                                <label>{{i18.es.producer.start_year_saf}}</label>
-                                <md-input v-model="form.start_year_saf" id="start_year_saf" name="start_year_saf" type="number" :step="0.01"></md-input>
+                                <label>{{i18.es.collector.name_president}}</label>
+                                <md-input v-model="form.name_president" id="name_president" name="name_president" type="text"></md-input>
                             </md-field>
                         </div>
-                        <div class="md-layout-item md-medium-size-100 md-small-size-100 md-size-25">
+                        <div class="md-layout-item md-small-size-100 md-size-33">
                             <md-field>
-                                <label>{{i18.es.producer.lat}}</label>
+                                <label>{{i18.es.collector.size_chocolate}}</label>
+                                <md-input v-model="form.size_chocolate" id="size_chocolate" name="size_chocolate" type="number"></md-input>
+                            </md-field>
+                        </div>
+                    </div>
+                    <div class="md-layout md-size-100">
+                        <div class="md-layout-item md-small-size-100 md-size-33">
+                            <md-field>
+                                <label>{{i18.es.collector.start_year_handle}}</label>
+                                <md-input v-model="form.start_year_handle" id="start_year_handle" name="start_year_handle" type="number"></md-input>
+                            </md-field>
+                        </div>
+                        <div class="md-layout-item md-small-size-100 md-size-33">
+                            <md-field>
+                                <label>{{i18.es.collector.lat}}</label>
                                 <md-input v-model="form.lat" id="lat" name="lat" type="number"></md-input>
                             </md-field>
                         </div>
-                        <div class="md-layout-item md-medium-size-100 md-small-size-100 md-size-25">
+                        <div class="md-layout-item md-small-size-100 md-size-33">
                             <md-field>
-                                <label>{{i18.es.producer.lng}}</label>
-                                <md-input v-model="form.lng" id="lng" name="lng" type="number" ></md-input>
+                                <label>{{i18.es.collector.lng}}</label>
+                                <md-input v-model="form.lng" id="lng" name="lng" type="number"></md-input>
                             </md-field>
                         </div>
                     </div>
                     <div class="md-toolbar-section-end md-size-100 md-medium-size-50 md-xsmall-size-50">
-                        <md-button to="/listproducer" class="md-cpk-danger md-round">CANCELAR</md-button>
+                        <md-button to="/listcollector" class="md-cpk-danger md-round">CANCELAR</md-button>
                         <md-button v-on:click="editar()" class="md-cpk-success md-round">GUARDAR</md-button>
                     </div>
                 </md-card-content>
-                
             </md-card>
-        <!-- <md-progress-bar md-mode="indeterminate" v-if="sending" />
-
-        <md-card-actions>
-          <md-button type="submit" class="md-primary" :disabled="sending">Create user</md-button>
-        </md-card-actions> -->
-     
-
-      <!-- <md-snackbar :md-active.sync="userSaved">The user {{ lastUser }} was saved with success!</md-snackbar> -->
             <md-dialog-alert
             v-if="error"
             :md-active.sync="error"
@@ -110,7 +111,7 @@
     import axios from "axios";
     import labelsi18 from "@/utils/labels.js";
     export default {
-        name:"EditProducer",
+        name:"EditCollector",
         data: function(){
             return{
                 userId: null,
@@ -120,19 +121,21 @@
                 form:{
                     "id": "",
                     "uuid": "",
-                    "names": "",
-                    "surnames": "",
-                    "department_id": 0,
-                    "municipality_id": 0,
-                    "community_id": 0,
-                    "saf_size": 0,
-                    "start_year_saf": 0,
-                    "lat": 0,
-                    "lng": 0,
+                    "group_name": "",
+                    "island_name": "",
+                    "department_id": null,
+                    "municipality_id": null,
+                    "community_id": null,
+                    "number_collectors": null,
+                    "name_president": "",
+                    "size_chocolate": null,
+                    "start_year_handle": null,
+                    "lat": null,
+                    "lng": null,
                     /* "created_by": 1,
                     "updated_by": null,
-                    "created_at": "2022-08-30T13:19:40.000000Z",
-                    "updated_at": "2022-08-30T13:24:49.000000Z" */
+                    "created_at": "2022-08-29T22:34:37.000000Z",
+                    "updated_at": "2022-08-29T23:39:58.000000Z" */
                 },
                 currDepartments:{},
                 currMunicipalities:{},
@@ -141,18 +144,19 @@
         },
         mounted:function(){
             this.form.id = this.$route.params.id;
-            axios.get("producer/" + this.form.id)
+            axios.get("collector/" + this.form.id)
             .then( response => {
                 //console.log(response);
-                //this.form.id = response.data.data.id;
                 this.form.uuid = response.data.data.uuid;
-                this.form.names = response.data.data.names;
-                this.form.surnames = response.data.data.surnames;
+                this.form.group_name = response.data.data.group_name;
+                this.form.island_name = response.data.data.island_name;
                 this.form.department_id = response.data.data.department_id;
                 this.form.municipality_id = response.data.data.municipality_id;
                 this.form.community_id = response.data.data.community_id;
-                this.form.saf_size = response.data.data.saf_size;
-                this.form.start_year_saf = response.data.data.start_year_saf;
+                this.form.number_collectors = response.data.data.number_collectors;
+                this.form.name_president = response.data.data.name_president;
+                this.form.size_chocolate = response.data.data.size_chocolate;
+                this.form.start_year_handle = response.data.data.start_year_handle;
                 this.form.lat = response.data.data.lat;
                 this.form.lng = response.data.data.lng;
                 //console.log(this.form);
@@ -178,7 +182,6 @@
                     this.currDepartments = responseDep.data;
                     localStorage.setItem('departments', JSON.stringify(responseDep.data));
                     //console.log(responseDep);
-                    //console.log(responseDep.data[1].name);
                 });
             },
             getMunicipalities(){
@@ -192,7 +195,6 @@
                     this.currMunicipalities = responseMun.data;
                     localStorage.setItem('municipalities', JSON.stringify(responseMun.data));
                     //console.log(responseMun);
-                    //console.log(responseDep.data[1].name);
                 });
             },
             /* getCommunities(){
@@ -206,7 +208,6 @@
                     this.currCommunities = responseCom.data;
                     localStorage.setItem('communities', JSON.stringify(responseCom.data));
                     //console.log(responseCom);
-                    //console.log(responseDep.data[1].name);
                 });
             }, */
             getCommunitiesNew(val){
@@ -224,36 +225,24 @@
                 });
             },
             editar(){
-                axios.put("producer/"+this.form.id, this.form)
+                axios.put("collector/"+this.form.id, this.form)
                 .then(data=>{
                     //console.log(data);
                     this.$notify({
                         message:
-                        "Toda la información del <b>productor</b> se actualizó satisfactoriamente.",
+                        "Toda la información del <b>recolector</b> se actualizó satisfactoriamente.",
                         icon: "thumb_up",
                         horizontalAlign: 'right',
                         verticalAlign: 'top',
                         type: "cpk-success",
                     });
-                    this.$router.push('/listproducer');
+                    this.$router.push('/listcollector');
                 }).catch((err) => {
                     this.error = true;
                     let message = typeof err.response !== "undefined" ? err.response.data.message : err.message;
                     //console.log(message);
                 })
             },
-            /* notifyVue() {
-                //var color = Math.floor(Math.random() * 4 + 1);
-                this.$notify({
-                    message:
-                    "Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer.",
-                    icon: "add_alert",
-                    horizontalAlign: 'right',//horizontalAlign,
-                    verticalAlign: 'top',//verticalAlign,
-                    type: "warning", //"success",
-                    //type: this.type[color],
-                });
-            }, */
         },
         computed:{
             /* formatDepartments(){
@@ -263,9 +252,5 @@
     }
 </script>
 <style scoped>
-    .md-autocomplete + strong {
-    margin-top: 36px;
-    display: block;
-  }
 
 </style>

@@ -276,7 +276,7 @@
     &[data-color="blue"]{
         @include set-background-color-button($brand-info);
     }
-    &[data-color="green"]{
+    /* &[data-color="green"]{
         @include set-background-color-button($brand-success);
     }
     &[data-color="orange"]{
@@ -284,6 +284,15 @@
     }
     &[data-color="red"]{
         @include set-background-color-button($brand-danger);
+    } */
+    &[data-color="green"]{
+      @include set-background-color-button(#42d146);
+    }
+    &[data-color="orange"]{
+        @include set-background-color-button(#e4b51b);
+    }
+    &[data-color="red"]{
+        @include set-background-color-button(#b81313);
     }
     &[data-color="purple"]{
         @include set-background-color-button($brand-primary);

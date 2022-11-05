@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="md-layout">
-      <div
+      <!-- <div
         class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-33"
       >
         <chart-card
@@ -72,13 +72,13 @@
             </div>
           </template>
         </chart-card>
-      </div>
-      <div
+      </div> -->
+      <!-- <div
         class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
       >
         <stats-card data-background-color="green">
           <template slot="header">
-            <md-icon>store</md-icon>
+            <md-icon>fact_check</md-icon>
           </template>
 
           <template slot="content">
@@ -88,7 +88,7 @@
 
           <template slot="footer">
             <div class="stats">
-              <md-icon class="text-success">date_range</md-icon>
+              <md-icon class="text-success">summarize</md-icon>
               Last 24 Hours
             </div>
           </template>
@@ -159,6 +159,91 @@
             </div>
           </template>
         </stats-card>
+      </div> -->
+      <div
+        class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
+      >
+        <stats-card data-background-color="green">
+          <template slot="header">
+            <md-icon>person</md-icon>
+          </template>
+
+          <!-- <template slot="content">
+            <p class="category">Total</p>
+            <h3 class="title">{{this.totalProducer}}</h3>
+          </template> -->
+
+          <template slot="footer">
+            <div class="stats">
+              <md-icon class="text-success">local_offer</md-icon>
+              Registro de Productores
+            </div>
+          </template>
+        </stats-card>
+      </div>
+      <div
+        class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
+      >
+        <stats-card data-background-color="orange">
+          <template slot="header">
+            <md-icon class="text-success">people</md-icon>
+          </template>
+
+          <!-- <template slot="content">
+            <p class="category">Total</p>
+            <h3 class="title">{{this.totalCollector}}</h3>
+          </template> -->
+
+          <template slot="footer">
+            <div class="stats">
+              <md-icon class="text-warning">discount</md-icon>
+              <!-- <a> -->Registro de Recolectores<!-- </a> -->
+            </div>
+          </template>
+        </stats-card>
+      </div>
+      <div
+        class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
+      >
+        <stats-card data-background-color="red">
+          <template slot="header">
+            <md-icon>fact_check</md-icon>
+            <!-- <md-icon>info_outline</md-icon> -->
+          </template>
+
+          <!-- <template slot="content">
+            <p class="category">Registrados</p>
+            <h3 class="title">75</h3>
+          </template> -->
+
+          <template slot="footer">
+            <div class="stats">
+              <md-icon class="text-danger">system_update</md-icon>
+              Encuestas SAF
+            </div>
+          </template>
+        </stats-card>
+      </div>
+      <div
+        class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
+      >
+        <stats-card data-background-color="blue">
+          <template slot="header">
+            <md-icon>summarize</md-icon>
+          </template>
+
+          <!-- <template slot="content">
+            <p class="category">Registrados</p>
+            <h3 class="title">+245</h3>
+          </template> -->
+
+          <template slot="footer">
+            <div class="stats">
+              <md-icon class="text-info">update</md-icon>
+              Encuestas Bosques con Cacao Silvestre
+            </div>
+          </template>
+        </stats-card>
       </div>
       
     </div>
@@ -166,6 +251,7 @@
 </template>
 
 <script>
+  import axios from "axios";
 import {
   StatsCard,
   ChartCard,
@@ -175,12 +261,15 @@ import {
 export default {
   components: {
     StatsCard,
-    ChartCard,
+    //ChartCard,
 
   },
   data() {
     return {
-      dailySalesChart: {
+      collector: [],
+      totalCollector: 0,
+      totalProducer: 0,
+      /* dailySalesChart: {
         data: {
           labels: ["M", "T", "W", "T", "F", "S", "S"],
           series: [[12, 17, 7, 17, 23, 18, 38]],
@@ -198,8 +287,8 @@ export default {
             left: 0,
           },
         },
-      },
-      dataCompletedTasksChart: {
+      }, */
+      /* dataCompletedTasksChart: {
         data: {
           labels: ["12am", "3pm", "6pm", "9pm", "12pm", "3am", "6am", "9am"],
           series: [[230, 750, 450, 300, 280, 240, 200, 190]],
@@ -218,8 +307,8 @@ export default {
             left: 0,
           },
         },
-      },
-      emailsSubscriptionChart: {
+      }, */
+      /* emailsSubscriptionChart: {
         data: {
           labels: [
             "Ja",
@@ -265,8 +354,24 @@ export default {
             },
           ],
         ],
-      },
+      }, */
     };
   },
+  async mounted() {
+    await this.totales();
+  },
+  methods: {
+    async totales(){
+      await this.axios.get('collector-all')
+      .then(response => {
+        this.totalCollector = response.data.data.total;
+      });
+      await this.axios.get('producers')
+      .then(response => {
+        this.totalProducer = response.data.data.total;
+        //console.log(response.data.data.total)
+      });
+    }
+  }
 };
 </script>

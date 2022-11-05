@@ -12,12 +12,13 @@
 </template>
 
 <script>
-import { LoginForm, LoginCard } from "@/pages";
+//import { LoginForm, LoginCard } from "@/pages";
+import { LoginForm } from "@/pages";
 
 export default {
   components: {
     LoginForm,
-    LoginCard,
+    //LoginCard,
   },
 };
 </script>

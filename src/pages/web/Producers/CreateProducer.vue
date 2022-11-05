@@ -1,22 +1,31 @@
 <template>
     <div>
-        <form novalidate class="md-layout" > <!-- @submit.prevent="validateUser" -->
+        <form novalidate class="md-layout" @submit.prevent="validateUser">
             <md-card class="md-layout-item md-size-100 md-small-size-100">
+                <!-- <md-card-header>
+                    <div class="md-title">{{this.$route.name}}</div>
+                </md-card-header> -->
                 <md-card-content>
-                    <div class="md-toolbar-section-start md-layout md-size-100">
-                        <div class="md-title">{{this.$route.name}}</div>
+                    <div class="md-toolbar-section-start md-size-100">
+                        <h1 class="md-title">{{this.$route.name}}</h1>
                     </div>
                     <div class="md-layout md-size-100">
                         <div class="md-layout-item md-small-size-100 md-size-50">
-                            <md-field>
+                            <md-field :class="messageClass">
                                 <label>{{i18.es.producer.names}}</label>
-                                <md-input v-model="form.names" id="names" name="names" type="text"></md-input>
+                                <md-input v-model="form.names" id="names" name="names" type="text" required></md-input>
+                                <span class="md-error" v-if="errors && errors.names">
+                                    {{errors.names[0]}}
+                                </span>
                             </md-field>
                         </div>
                         <div class="md-layout-item md-small-size-100 md-size-50">
-                            <md-field>
+                            <md-field :class="messageClass">
                                 <label>{{i18.es.producer.surnames}}</label>
-                                <md-input v-model="form.surnames" id="surnames" name="surnames" type="text"></md-input>
+                                <md-input v-model="form.surnames" id="surnames" name="surnames" type="text" required></md-input>
+                                <span class="md-error" v-if="errors && errors.surnames">
+                                    {{errors.surnames[0]}}
+                                </span>
                             </md-field>
                         </div>
                         <!-- <div class="md-layout-item md-small-size-100 md-size-33">
@@ -26,109 +35,109 @@
                             </md-field>
                         </div> -->
                     </div>
-                                        
                     <div class="md-layout md-size-100">
                         <div class="md-layout-item md-small-size-100 md-size-33">
-                            <md-field>
+                            <md-field :class="messageClass">
                                 <label >{{i18.es.producer.department_id}}</label>
-                                <!-- <md-select v-model="iniDepartment" name="departments" id="departments"> -->
-                                    <md-select v-model="form.department_id" name="departments" id="departments">
+                                    <md-select v-model="form.department_id" name="departments" id="departments" required>
                                     <md-option v-for="department in currDepartments" :value="department.id" :key="department.id" >{{department.name}}</md-option>
                                 </md-select>
+                                <span class="md-error" v-if="errors && errors.department_id">
+                                    {{errors.department_id[0]}}
+                                </span>
                             </md-field>
                         </div>
                         <div class="md-layout-item md-small-size-100 md-size-33">
-                            <md-field>
+                            <md-field :class="messageClass">
                                 <label >{{i18.es.producer.municipality_id}}</label>
-                                <!-- <md-select v-model="iniDepartment" name="departments" id="departments"> -->
-                                    <md-select v-model="form.municipality_id" name="municipalities" id="municipalities" @md-selected="getCommunitiesNew(form.municipality_id)">
+                                    <md-select v-model="form.municipality_id" name="municipalities" id="municipalities" @md-selected="getCommunitiesNew(form.municipality_id)" required>
                                     <md-option v-for="municipality in currMunicipalities" :value="municipality.id" :key="municipality.id" >{{municipality.name}}</md-option>
                                 </md-select>
+                                <span class="md-error" v-if="errors && errors.municipality_id">
+                                    {{errors.municipality_id[0]}}
+                                </span>
                             </md-field>
                         </div>
                         <div class="md-layout-item md-small-size-100 md-size-33">
-                            <md-field>
+                            <md-field :class="messageClass">
                                 <label >{{i18.es.producer.community_id}}</label>
-                                <!-- <md-select v-model="iniDepartment" name="departments" id="departments"> -->
-                                    <md-select v-model="form.community_id" name="communities" id="communities">
+                                    <md-select v-model="form.community_id" name="communities" id="communities" required>
                                     <md-option v-for="community in currCommunities" :value="community.id" :key="community.id" >{{community.name}}</md-option>
                                 </md-select>
+                                <span class="md-error" v-if="errors && errors.community_id">
+                                    {{errors.community_id[0]}}
+                                </span>
                             </md-field>
                         </div>
-                        <!-- selected user:{{currDepartments}} -->
                     </div>
                     <div class="md-layout md-size-100">
-                        <div class="md-layout-item md-medium-size-100 md-small-size-100 md-size-25">
-                            <md-field>
+                        <div class="md-layout-item md-small-size-100 md-size-25">
+                            <md-field :class="messageClass">
                                 <label>{{i18.es.producer.saf_size}}</label>
-                                <md-input v-model="form.saf_size" id="saf_size" name="saf_size" type="number" :step="0.01"></md-input>
+                                <md-input v-model="form.saf_size" id="saf_size" name="saf_size" type="number" :step="0.01" required></md-input>
+                                <span class="md-error" v-if="errors && errors.saf_size">
+                                    {{errors.saf_size[0]}}
+                                </span>
                             </md-field>
                         </div>
-                        <div class="md-layout-item md-medium-size-100 md-small-size-100 md-size-25">
-                            <md-field>
+                        <div class="md-layout-item md-small-size-100 md-size-25">
+                            <md-field :class="messageClass">
                                 <label>{{i18.es.producer.start_year_saf}}</label>
-                                <md-input v-model="form.start_year_saf" id="start_year_saf" name="start_year_saf" type="number" :step="0.01"></md-input>
+                                <md-input v-model="form.start_year_saf" id="start_year_saf" name="start_year_saf" type="number" :step="0.01" required></md-input>
+                                <span class="md-error" v-if="errors && errors.start_year_saf">
+                                    {{errors.start_year_saf[0]}}
+                                </span>
                             </md-field>
                         </div>
-                        <div class="md-layout-item md-medium-size-100 md-small-size-100 md-size-25">
-                            <md-field>
+                        <div class="md-layout-item md-small-size-100 md-size-25">
+                            <md-field :class="messageClass">
                                 <label>{{i18.es.producer.lat}}</label>
-                                <md-input v-model="form.lat" id="lat" name="lat" type="number"></md-input>
+                                <md-input v-model="form.lat" id="lat" name="lat" type="number" required></md-input>
+                                <span class="md-error" v-if="errors && errors.lat">
+                                    {{errors.lat[0]}}
+                                </span>
                             </md-field>
                         </div>
-                        <div class="md-layout-item md-medium-size-100 md-small-size-100 md-size-25">
-                            <md-field>
+                        <div class="md-layout-item md-small-size-100 md-size-25">
+                            <md-field :class="messageClass">
                                 <label>{{i18.es.producer.lng}}</label>
-                                <md-input v-model="form.lng" id="lng" name="lng" type="number" ></md-input>
+                                <md-input v-model="form.lng" id="lng" name="lng" type="number" required></md-input>
+                                <span class="md-error" v-if="errors && errors.lng">
+                                    {{errors.lng[0]}}
+                                </span>
                             </md-field>
                         </div>
                     </div>
-                    <div class="md-toolbar-section-end md-size-100 md-medium-size-50 md-xsmall-size-50">
-                        <md-button to="/listproducer" class="md-cpk-danger md-round">CANCELAR</md-button>
-                        <md-button v-on:click="editar()" class="md-cpk-success md-round">GUARDAR</md-button>
+                    <div class="md-toolbar-section-end md-layout md-size-100">
+                        <md-button v-on:click="salir()" class="md-cpk-danger md-round">SALIR</md-button>
+                        <md-button v-on:click="guardar()" class="md-cpk-success md-round" :disabled="form_submitting">GUARDAR</md-button>
                     </div>
                 </md-card-content>
-                
             </md-card>
-        <!-- <md-progress-bar md-mode="indeterminate" v-if="sending" />
-
-        <md-card-actions>
-          <md-button type="submit" class="md-primary" :disabled="sending">Create user</md-button>
-        </md-card-actions> -->
-     
-
-      <!-- <md-snackbar :md-active.sync="userSaved">The user {{ lastUser }} was saved with success!</md-snackbar> -->
-            <md-dialog-alert
-            v-if="error"
-            :md-active.sync="error"
-            md-title="Error!"
-            md-content="No se realizo la actualización." />
-        </form>
+         </form>
     </div>
 </template>
 <script>
     import axios from "axios";
     import labelsi18 from "@/utils/labels.js";
     export default {
-        name:"EditProducer",
+        name:"CreateProducer",
         data: function(){
             return{
                 userId: null,
                 i18: labelsi18,
-                error: false,
-                error_msj: "",
+                inhabilita: true,
                 form:{
-                    "id": "",
                     "uuid": "",
                     "names": "",
                     "surnames": "",
                     "department_id": 0,
                     "municipality_id": 0,
                     "community_id": 0,
-                    "saf_size": 0,
-                    "start_year_saf": 0,
-                    "lat": 0,
-                    "lng": 0,
+                    "saf_size": null,
+                    "start_year_saf": null,
+                    "lat": null,
+                    "lng": null,
                     /* "created_by": 1,
                     "updated_by": null,
                     "created_at": "2022-08-30T13:19:40.000000Z",
@@ -137,31 +146,12 @@
                 currDepartments:{},
                 currMunicipalities:{},
                 currCommunities:{},
+                errors: {},
+                hasMessages: true,
+                form_submitting: false
             }
         },
         mounted:function(){
-            this.form.id = this.$route.params.id;
-            axios.get("producer/" + this.form.id)
-            .then( response => {
-                //console.log(response);
-                //this.form.id = response.data.data.id;
-                this.form.uuid = response.data.data.uuid;
-                this.form.names = response.data.data.names;
-                this.form.surnames = response.data.data.surnames;
-                this.form.department_id = response.data.data.department_id;
-                this.form.municipality_id = response.data.data.municipality_id;
-                this.form.community_id = response.data.data.community_id;
-                this.form.saf_size = response.data.data.saf_size;
-                this.form.start_year_saf = response.data.data.start_year_saf;
-                this.form.lat = response.data.data.lat;
-                this.form.lng = response.data.data.lng;
-                //console.log(this.form);
-            }).catch((error) => {
-                if (error.response.status === 401) {
-                  this.$router.push({ name: 'Login'})
-                }
-              });
-
             this.getDepartments();
             this.getMunicipalities();
             //this.getCommunities();
@@ -223,42 +213,41 @@
                     //console.log(responseCom);
                 });
             },
-            editar(){
-                axios.put("producer/"+this.form.id, this.form)
-                .then(data=>{
+            guardar(){
+                this.form_submitting = true;
+                axios.post("producer", this.form)
+                .then(response=>{
                     //console.log(data);
                     this.$notify({
                         message:
-                        "Toda la información del <b>productor</b> se actualizó satisfactoriamente.",
+                        "Toda la información del <b>productor</b> se almacenó satisfactoriamente.",
                         icon: "thumb_up",
                         horizontalAlign: 'right',
                         verticalAlign: 'top',
                         type: "cpk-success",
                     });
+                    this.form_submitting = false;
                     this.$router.push('/listproducer');
-                }).catch((err) => {
-                    this.error = true;
-                    let message = typeof err.response !== "undefined" ? err.response.data.message : err.message;
-                    //console.log(message);
-                })
-            },
-            /* notifyVue() {
-                //var color = Math.floor(Math.random() * 4 + 1);
-                this.$notify({
-                    message:
-                    "Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer.",
-                    icon: "add_alert",
-                    horizontalAlign: 'right',//horizontalAlign,
-                    verticalAlign: 'top',//verticalAlign,
-                    type: "warning", //"success",
-                    //type: this.type[color],
+                }).catch(error => {
+                    if(error.response.status === 422) {
+                        this.errors = error.response.data.errors;
+                        this.form_submitting = false;
+                    }
                 });
-            }, */
+            },
+            salir(){
+                this.$router.push('/listproducer');
+            }
         },
         computed:{
             /* formatDepartments(){
                 return Object.values(this.currDepartments);
             } */
+            messageClass () {
+                return {
+                    'md-invalid': this.hasMessages
+                }
+            }
         }
     }
 </script>

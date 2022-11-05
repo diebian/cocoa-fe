@@ -95,6 +95,7 @@ export default {
       // START LABELS COLLECTOR
       collector: {
         id: "ID",
+        uuid: "UUID",
         lat: "Latitud", // No visible en form add/update
         lng: "Longitud", // No visible en form add/update
         group_name: "Nombre del grupo de recolectores",

@@ -2,7 +2,8 @@
     border: none;
     border-radius: $border-radius-base;
     position: relative;
-    margin: 10px 1px;
+    //margin: 10px 1px;
+    margin: 3px 5px;
     height: auto;
     line-height: 1.42857;
 
@@ -44,11 +45,13 @@
 
     &,
     &.md-default{
-        @include btn-styles($gray-light);
+        //@include btn-styles($gray-light);
+        @include btn-styles(#42d146);
     }
 
     &.md-primary{
-      @include btn-styles($brand-primary);
+      //@include btn-styles($brand-primary);
+      @include btn-styles(#42d146);
     }
     &.md-info{
       @include btn-styles($brand-info);
@@ -61,6 +64,18 @@
     }
     &.md-danger{
       @include btn-styles($brand-danger);
+    }
+    &.md-cpk-success{
+      @include btn-styles(#42d146);
+    }
+    &.md-cpk-warning{
+      @include btn-styles(#e4b51b);
+    }
+    &.md-cpk-danger{
+      @include btn-styles(#b81313);
+    }
+    &.md-cpk-info{
+      @include btn-styles(#46D8A7);
     }
     &.md-white{
         &,

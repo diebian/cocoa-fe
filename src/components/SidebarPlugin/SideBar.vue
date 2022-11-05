@@ -13,7 +13,7 @@
       </a>
 
       <a
-        href="https://www.creative-tim.com/product/vue-material-dashboard"
+        href="https://cipca.org.bo/"
         target="_blank"
         class="simple-text logo-normal"
       >
@@ -47,15 +47,16 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Vue MD",
+      default: "CIPCA BENI",
     },
     sidebarBackgroundImage: {
       type: String,
-      default: require("@/assets/img/sidebar-2.jpg"),
+      default: require("@/assets/img/fondo.jpg"),
     },
     imgLogo: {
       type: String,
-      default: require("@/assets/img/vue-logo.png"),
+      //default: require("@/assets/img/vue-logo.png"),
+      default: require("@/assets/img/logos/logo.jpg"),
     },
     sidebarItemColor: {
       type: String,

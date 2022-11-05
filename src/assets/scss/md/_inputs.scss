@@ -429,7 +429,8 @@ select.form-control {
   }
 
   &:before{
-    background-color: $brand-primary !important;
+    //background-color: $brand-primary !important;
+    background-color: #42d146 !important;
   }
 
   &.md-focused label,

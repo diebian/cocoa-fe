@@ -40,6 +40,18 @@
       @include alert-color(lighten($brand-success,5%));
     }
 
+    &.alert-cpk-danger{
+      @include alert-color(lighten(#b81313,5%));
+    }
+
+    &.alert-cpk-warning{
+      @include alert-color(lighten(#e4b51b,5%));
+    }
+
+    &.alert-cpk-success{
+      @include alert-color(lighten(#42d146,5%));
+    }
+
 
     &-info, &-danger, &-warning, &-success {
         color: $mdb-text-color-light;

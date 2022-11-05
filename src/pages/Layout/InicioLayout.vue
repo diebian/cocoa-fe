@@ -1,17 +1,12 @@
 <template>
-
-
-    
     <div>
       <top-navbarinicio></top-navbarinicio>
-
-
-
-      <dashboard-contentinicio> </dashboard-contentinicio>
-
+      <div class="md-hl-contenedor">
+        <dashboard-contentinicio> </dashboard-contentinicio>
+      </div>
+      
       <content-footerinicio v-if="!$route.meta.hideFooter"></content-footerinicio>
     </div>
-
 </template>
 
 <script>
@@ -38,3 +33,11 @@ export default {
   },
 };
 </script>
+<style>
+  .md-hl-contenedor{
+    /* height: 85px; */
+    min-height: calc(100vh - 95px - 85px);
+    /* border: 1px solid blue; */
+    /* background-color: #c4ccd0; */
+  }
+</style>
